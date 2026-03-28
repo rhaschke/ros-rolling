@@ -166,6 +166,8 @@ packages_select_by_deps:
 
       - libcamera
 
+      - rosgraph_monitor
+
   # These packages are currently only build on Linux,
   # as trying to build them in the past on macos or Windows resulted in errors
   - if: linux
