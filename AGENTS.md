@@ -91,7 +91,7 @@ bash -x conda_build.sh 2>&1 | less
 ### 7. Rebuild package
 
 ```bash
-pixi run build-one --package ros-$DISTRO-<pkg>
+pixi run build-one ros-$DISTRO-<pkg>
 ```
 
 ## Create a patch from build-directory edits
