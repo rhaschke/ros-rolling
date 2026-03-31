@@ -73,6 +73,6 @@ libhwloc:
   - 2.12.2
 
 urdfdom:
-  -  1.1.2
+  -  4.0.1
 urdfdom-headers:
   -  1.1.2
