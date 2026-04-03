@@ -57,7 +57,7 @@ packages_select_by_deps:
   - simulation
 
   - desktop
-  - desktop_full
+#  - desktop_full
 
 #  - moveit
 #  - moveit-planners-chomp
