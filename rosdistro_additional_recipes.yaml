@@ -59,6 +59,10 @@ autoware_utils_visualization:
   url: https://github.com/ros2-gbp/autoware_utils-release.git
   version: 1.4.2
 # TODO: remove autoware_core and it's sub packages after they are released in kilted
+autoware_cmake:
+  tag: release/jazzy/1.1.0-1
+  url: https://github.com/ros2-gbp/autoware_cmake-release.git
+  version: 1.1.0
 autoware_adapi_adaptors:
   tag: release/humble/autoware_adapi_adaptors/1.7.0-1
   url: https://github.com/ros2-gbp/autoware_core-release.git
