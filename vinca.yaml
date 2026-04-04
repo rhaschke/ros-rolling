@@ -155,6 +155,10 @@ packages_select_by_deps:
 
   - better_launch
   - cm_executors
+  - py-trees
+  - py-trees-ros-interfaces
+  - py-trees-ros
+  - py-trees-ros-viewer
 
   # These packages are only built on Linux as they depend on Linux-specific API
   - if: linux
