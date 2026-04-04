@@ -1,4 +1,8 @@
-@@ -64,6 +66,8 @@ target_link_libraries(ublox_gps PUBLIC
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a9fdf1..3122dd8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,6 +64,8 @@ target_link_libraries(ublox_gps PUBLIC
    ublox_serialization::ublox_serialization
  )
  
@@ -8,7 +12,7 @@
    ARCHIVE DESTINATION lib
    LIBRARY DESTINATION lib
 diff --git a/include/ublox_gps/async_worker.hpp b/include/ublox_gps/async_worker.hpp
-index 2315163..9c360b1 100644
+index 2315163..e7b4520 100644
 --- a/include/ublox_gps/async_worker.hpp
 +++ b/include/ublox_gps/async_worker.hpp
 @@ -39,8 +39,9 @@
@@ -22,7 +26,7 @@ index 2315163..9c360b1 100644
  #include <asio/write.hpp>
  #include <asio/ip/udp.hpp>
  
-@@ -59,11 +60,11 @@
+@@ -59,11 +60,11 @@ class AsyncWorker final : public Worker {
    /**
     * @brief Construct an Asynchronous I/O worker.
     * @param stream the stream for th I/O service
@@ -36,7 +40,7 @@ index 2315163..9c360b1 100644
                         std::size_t buffer_size,
                         int debug,
                         const rclcpp::Logger& logger);
-@@ -124,7 +125,7 @@
+@@ -124,7 +125,7 @@ class AsyncWorker final : public Worker {
    void doClose();
  
    std::shared_ptr<StreamT> stream_; //!< The I/O stream
@@ -45,7 +49,7 @@ index 2315163..9c360b1 100644
  
    std::mutex read_mutex_; //!< Lock for the input buffer
    std::condition_variable read_condition_;
-@@ -150,22 +151,22 @@
+@@ -150,22 +151,22 @@ class AsyncWorker final : public Worker {
  
  template <typename StreamT>
  AsyncWorker<StreamT>::AsyncWorker(std::shared_ptr<StreamT> stream,
@@ -73,7 +77,7 @@ index 2315163..9c360b1 100644
    background_thread_->join();
    //io_service_->reset();
  }
-@@ -185,7 +186,7 @@
+@@ -185,7 +186,7 @@ bool AsyncWorker<StreamT>::send(const unsigned char* data,
    }
    out_.insert(out_.end(), data, data + size);
  
@@ -82,7 +86,7 @@ index 2315163..9c360b1 100644
    return true;
  }
  
-@@ -314,7 +315,7 @@
+@@ -314,7 +315,7 @@ void AsyncWorker<StreamT>::readEnd(const asio::error_code& error,
    }
  
    if (!stopping_) {
@@ -114,7 +118,7 @@ index 84ffe7a..1b8043d 100644
      }
  
 diff --git a/src/gps.cpp b/src/gps.cpp
-index e71377d..7e92ee7 100644
+index e71377d..00c0bf1 100644
 --- a/src/gps.cpp
 +++ b/src/gps.cpp
 @@ -33,7 +33,7 @@
@@ -126,7 +130,7 @@ index e71377d..7e92ee7 100644
  #include <asio/serial_port.hpp>
  #include <asio/serial_port_base.hpp>
  #include <asio/ip/tcp.hpp>
-@@ -125,8 +125,8 @@
+@@ -125,8 +125,8 @@ void Gps::processUpdSosAck(const ublox_msgs::msg::UpdSOSAck &m) {
  void Gps::initializeSerial(const std::string & port, unsigned int baudrate,
                             uint16_t uart_in, uint16_t uart_out) {
    port_ = port;
@@ -137,7 +141,7 @@ index e71377d..7e92ee7 100644
  
    // open serial port
    try {
-@@ -138,17 +138,19 @@
+@@ -138,17 +138,19 @@ void Gps::initializeSerial(const std::string & port, unsigned int baudrate,
  
    RCLCPP_INFO(logger_, "U-Blox: Opened serial port %s", port.c_str());
  
@@ -158,7 +162,7 @@ index e71377d..7e92ee7 100644
  
    configured_ = false;
  
-@@ -181,8 +183,8 @@
+@@ -181,8 +183,8 @@ void Gps::initializeSerial(const std::string & port, unsigned int baudrate,
  }
  
  void Gps::resetSerial(const std::string & port) {
@@ -169,7 +173,7 @@ index e71377d..7e92ee7 100644
  
    // open serial port
    try {
-@@ -198,7 +200,7 @@
+@@ -198,7 +200,7 @@ void Gps::resetSerial(const std::string & port) {
    if (worker_) {
      return;
    }
@@ -178,7 +182,7 @@ index e71377d..7e92ee7 100644
    configured_ = false;
  
    // Poll UART PRT Config
-@@ -223,69 +225,67 @@
+@@ -223,69 +225,67 @@ void Gps::resetSerial(const std::string & port) {
  void Gps::initializeTcp(const std::string & host, const std::string & port) {
    host_ = host;
    port_ = port;
