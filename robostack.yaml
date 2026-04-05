@@ -422,9 +422,9 @@ libpcl-all:
   robostack: [pcl]
 libpcl-all-dev:
   robostack:
-    linux: [pcl, libboost-devel, vtk-base, libopengl-devel, libgl-devel]
-    osx: [pcl, libboost-devel, vtk-base]
-    win64: [pcl, libboost-devel, vtk-base]
+    linux: [pcl, libboost-devel, vtk-base, libopengl-devel, libgl-devel, eigen-abi-devel]
+    osx: [pcl, libboost-devel, vtk-base, eigen-abi-devel]
+    win64: [pcl, libboost-devel, vtk-base, eigen-abi-devel]
 libpng-dev:
   robostack: [libpng]
 libpoco-dev:
