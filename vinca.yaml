@@ -56,7 +56,7 @@ packages_select_by_deps:
   - navigation2
   - simulation
 
-  - desktop
+#  - desktop
 #  - desktop_full
 #
 #  - moveit
