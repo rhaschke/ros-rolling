@@ -287,6 +287,8 @@ libdw-dev:
     linux: [elfutils]
     osx: []
     win64: []
+libexpected-dev:
+  robostack: [cpp-expected]
 libfcl-dev:
   robostack: [fcl]
 libffi-dev:
@@ -420,9 +422,9 @@ libpcl-all:
   robostack: [pcl]
 libpcl-all-dev:
   robostack:
-    linux: [pcl, libboost-devel, vtk-base, libopengl-devel, libgl-devel]
-    osx: [pcl, libboost-devel, vtk-base]
-    win64: [pcl, libboost-devel, vtk-base]
+    linux: [pcl, libboost-devel, vtk-base, libopengl-devel, libgl-devel, eigen-abi-devel]
+    osx: [pcl, libboost-devel, vtk-base, eigen-abi-devel]
+    win64: [pcl, libboost-devel, vtk-base, eigen-abi-devel]
 libpng-dev:
   robostack: [libpng]
 libpoco-dev:
@@ -994,7 +996,7 @@ python3-usb:
 python3-uvicorn:
   robostack: [uvicorn]
 python3-vcstool:
-  robostack: [vcstool]
+  robostack: [vcs2l]
 python3-flake8-docstrings:
   robostack: [flake8-docstrings]
 python3-flake8-import-order:
